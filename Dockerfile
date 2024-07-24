@@ -1,6 +1,6 @@
 FROM mageai/mageai:alpha
 
-ARG PROJECT_NAME=autoscout_deployment
+ARG PROJECT_NAME=mage_modeling
 ARG MAGE_CODE_PATH=/home/src
 ARG USER_CODE_PATH=${MAGE_CODE_PATH}/${PROJECT_NAME}
 

@@ -1,54 +1,47 @@
 # Final Project
 
-# Dataset:
-- German used cars dataset (Autoscout24)
-- Data exploration notebook, missing value removal, for pipeline
-- pipeline steps
-
-
-Tracking with MLFlow
-
-1. install mlflow
-`pip install mlflow`
-
-2. configure mlflow
-- run `mlflow` in the console to see all commands
-
-- run `mlflow ui --backend-store-uri sqlite:///mlflow.db` to run mlflow with a sqlite database
-
-- put `mlflow.set_tracking_uri("sqlite:///mlflow.db")` into your code to set the tracking URI
-
-- put `mlflow.set_experiment({your_experiment_name})` to set the experiment name
-
-- use `with mlflow.start_run():` and `mlflow.log_param()` or `mlflow.log_metric()` to track your parameters and metrics
-
-- to safely shut down mlflow, use these commands:
-
-
-`sudo lsof -i -P -n | grep 8080`
-lists active processes at port 8080
-
-`sudo kill <id>`
-
-kills the port by the ID which is listed in the active processes.
-
-
-3. Use mage
-- After opening up Docker, in the scripts directory, run `sh start.sh`
-
-
 *Problem description*
 For my MLOps final project, I utilized the Autoscout24 German used car dataset to develop a comprehensive machine learning pipeline. The project involved creating a predictive model to estimate car prices based on various features like make, model, year, mileage, and more.
 
 Key steps included:
 
-Data Preprocessing: Cleaning and preparing the data for modeling.
-Model Development: Training and evaluating multiple predictive models to select the best one.
-Model Deployment: Containerizing the model using Docker and deploying it on a cloud platform.
-Monitoring and Maintenance: Implementing continuous monitoring to track model performance and data drift, ensuring the model remains accurate over time.
-This project demonstrated my ability to manage the entire machine learning lifecycle, from data processing to deployment and ongoing model management, reflecting practical MLOps practices.
+- Data Preprocessing: Cleaning and preparing the data for modeling
+    - see `jupyter_notebooks` folder for my first inspection of the dataset
+- Model Development: Training and evaluating a xgboost model using mlflow as a monitoring tool and mage as orchestration framework
+    - saving the best model using pickle and storing the best parameters as json and inside mlflow
+    - validation on a batch dataset from a different source
+
+- Model Deployment: Containerizing the model using Docker and deploying it as a web service.
+
+*To Do's:*
+- graphical user interface to allow users to estimate the price of their used cars
+- price range estimation instead of point estimate
+- cloud deployment
+- data drift checks using new data
+- new data scraping scripts for continuous scraping on the autoscout24 web page
 
 
 
 # Instructions
 
+#### Training, model monitoring & saving a model
+
+
+- To get started, run `scripts/run.sh`  (go to the `scripts` directory and run `sh run.sh` in your terminal)
+
+- This will run the `docker-compose` for mage, mlflow and the database, as in the third module of the course
+
+- open mage (using [localhost:](http://localhost:6789/overview)) and go to pipelines -> data_prep
+
+- the code is set to 2 runs to find the best parameters. Change `n_evals` in the modeling step to a higher integer for a possibly better model. 
+
+- if a `best_params.json` file is inside the `models` directory, the code will use these parameters and not tune the model.
+
+- run the pipeline to test it and see the performance on the validation batch dataset from a different source
+
+
+#### web service
+
+- Locate to the `webservice` directory
+
+- follow the instructions in the `README.md`

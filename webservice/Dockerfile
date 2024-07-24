@@ -9,7 +9,7 @@ COPY [ "Pipfile", "Pipfile.lock", "./" ]
 
 RUN pipenv install --system --deploy
 
-COPY [ "predict.py", "data_cleaner.py", "mdl_pipeline.bin", "./" ]
+COPY [ "predict.py", "data_cleaner.py", "models/mdl_pipeline.bin", "./" ]
 
 EXPOSE 9696
 

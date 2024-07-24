@@ -3,8 +3,8 @@ from data_cleaner import DataCleaner
 from flask import Flask, request, jsonify
 import pandas as pd
 
-with open('mdl_pipeline.bin', 'rb') as f_in:
-    (model) = pickle.load(f_in)
+with open('../models/mdl_pipeline.bin', 'rb') as f_in:
+    model = pickle.load(f_in)
 
 
 def prepare_features(car_data):
