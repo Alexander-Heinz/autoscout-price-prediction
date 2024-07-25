@@ -15,3 +15,6 @@ docker build -t autoscout-price-prediction:v1 .
 ```bash
 docker run -it --rm -p 9696:9696  autoscout-price-prediction:v1
 ```
+
+
+run `python test.py` to test the batch prediction using the web service
