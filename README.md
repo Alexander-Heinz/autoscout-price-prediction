@@ -14,13 +14,23 @@ Key steps included:
 - Model Deployment: Containerizing the model using Docker and deploying it as a web service.
 
 *To Do's:*
+- improve UI:
+    - better graphics
+    - price range?
+    - info about other cars
+    - Nachkommastellen
+    - 
+
+- cloud deployment
+
+
+
 - graphical user interface to allow users to estimate the price of their used cars
 - price range estimation instead of point estimate
-- cloud deployment
 - data drift checks using new data
 - new data scraping scripts for continuous scraping on the autoscout24 web page
 
-
+- more comprehensive README
 
 # Instructions
 

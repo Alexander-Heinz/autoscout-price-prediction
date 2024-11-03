@@ -2,3 +2,7 @@
 /data
 /models
 mlflow.db
+.DS_Store
+*.pyc
+.DS_Store
+.DS_Store?
